@@ -26,7 +26,7 @@ provider "azurerm" {
 
 
 
-resource "azurerm_resource_group" "adf-rg" {
+resource "azurerm_resource_group" "rg" {
   name     = "fg-adf-rg"
   location = "Uk south"
 }
