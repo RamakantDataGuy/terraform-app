@@ -16,6 +16,6 @@ resource "azurerm_storage_account" "fg-datalake-sa" {
 
 
   tags = {
-    environment = "staging"
+    environment = "Production"
   }
 }
