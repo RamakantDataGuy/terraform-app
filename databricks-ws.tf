@@ -4,6 +4,8 @@ resource "azurerm_databricks_workspace" "fg-databricks" {
   location            = azurerm_resource_group.rg.location
   sku                 = "trial"
 
+
+
   tags = {
     Environment = "Production"
   }

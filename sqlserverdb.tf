@@ -26,6 +26,10 @@ resource "azurerm_mssql_server" "azuresql" {
   administrator_login          = "4adminu$er"
   administrator_login_password = random_password.randompassword.result
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   azuread_administrator {
     login_username = "AzureAD Admin"
     object_id      = "86f50fc0-0d0d-4c26-941d-17dd64ed03a6"
@@ -38,7 +42,7 @@ resource "azurerm_mssql_database" "fg-database" {
   name           = "fg-db"
   server_id      = azurerm_mssql_server.azuresql.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
-  max_size_gb    = 2
+ # max_size_gb    = 2
   read_scale     = false
   sku_name       = "Basic"
   zone_redundant = false
