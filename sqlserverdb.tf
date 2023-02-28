@@ -19,7 +19,7 @@ resource "azurerm_key_vault_secret" "sqladminpassword" {
 
 #Azure sql database
 resource "azurerm_mssql_server" "azuresql" {
-  name                         = "fg-sqldb-prod"
+  name                         = "fg-dp-sqldb-prod"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
@@ -32,15 +32,7 @@ resource "azurerm_mssql_server" "azuresql" {
   }
 }
 
-#add subnet from the backend vnet
-resource "azurerm_mssql_virtual_network_rule" "allow-be" {
-  name      = "be-sql-vnet-rule"
-  server_id = azurerm_mssql_server.azuresql.id
-  subnet_id = azurerm_subnet.be-subnet.id
-  depends_on = [
-    azurerm_mssql_server.azuresql
-  ]
-}
+
 
 resource "azurerm_mssql_database" "fg-database" {
   name           = "fg-db"
@@ -48,7 +40,7 @@ resource "azurerm_mssql_database" "fg-database" {
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   max_size_gb    = 2
   read_scale     = false
-  sku_name       = "S0"
+  sku_name       = "Basic"
   zone_redundant = false
 
   tags = {

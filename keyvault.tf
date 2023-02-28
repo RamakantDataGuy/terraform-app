@@ -12,6 +12,10 @@ resource "azurerm_key_vault" "fg-keyvault" {
   purge_protection_enabled    = false
   sku_name                    = "standard"
 
+  tags = {
+    Environment = "Production"
+  }
+
 
 }
 
