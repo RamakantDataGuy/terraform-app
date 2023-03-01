@@ -32,7 +32,7 @@ resource "azurerm_mssql_server" "azuresql" {
 
   azuread_administrator {
     login_username = "AzureAD Admin"
-    object_id      = "86f50fc0-0d0d-4c26-941d-17dd64ed03a6"
+    object_id      = "52c47d8b-ebe9-4f4e-a869-f45e37a09b3f"
   }
 }
 
